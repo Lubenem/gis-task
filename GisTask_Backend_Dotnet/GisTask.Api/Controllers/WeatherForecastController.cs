@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Driver.Api.Controllers;
+namespace GisTask.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]

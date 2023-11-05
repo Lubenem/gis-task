@@ -1,4 +1,4 @@
-namespace Driver.Api;
+namespace GisTask.Api;
 
 public class WeatherForecast
 {

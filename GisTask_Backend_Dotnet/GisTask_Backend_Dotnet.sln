@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GisTask.Api", "GisTask.Api\GisTask.Api.csproj", "{B6C00A20-2430-49F2-9F66-9E513A655752}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GisTask.Domain", "GisTask.Domain\GisTask.Domain.csproj", "{D40B406D-2FCC-4AEF-8970-F267EAB63000}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6C00A20-2430-49F2-9F66-9E513A655752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6C00A20-2430-49F2-9F66-9E513A655752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6C00A20-2430-49F2-9F66-9E513A655752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6C00A20-2430-49F2-9F66-9E513A655752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D40B406D-2FCC-4AEF-8970-F267EAB63000}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D40B406D-2FCC-4AEF-8970-F267EAB63000}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D40B406D-2FCC-4AEF-8970-F267EAB63000}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D40B406D-2FCC-4AEF-8970-F267EAB63000}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {415D2DFF-2588-45C7-8E9F-E5216D3D7FFB}
+	EndGlobalSection
+EndGlobal
