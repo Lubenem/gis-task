@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GisTask.Domain.Migrations
 {
     [DbContext(typeof(AppContext))]
-    [Migration("20231105154434_Backend-Skeleton-Db")]
+    [Migration("20231106075030_Backend-Skeleton-Db")]
     partial class BackendSkeletonDb
     {
         /// <inheritdoc />
@@ -27,9 +27,11 @@ namespace GisTask.Domain.Migrations
 
             modelBuilder.Entity("GisTask.Domain.Entities.Driver", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -45,12 +47,14 @@ namespace GisTask.Domain.Migrations
 
             modelBuilder.Entity("GisTask.Domain.Entities.Trip", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<Guid?>("DriverId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("DriverId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
