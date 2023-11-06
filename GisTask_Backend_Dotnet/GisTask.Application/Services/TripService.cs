@@ -1,16 +1,31 @@
 ﻿using GisTask.Application.Dtos;
+using GisTask.Application.Interfaces;
 using GisTask.Domain.Entities;
 using AppContext = GisTask.Domain.AppContext;
 
-namespace GisTask.Application;
+namespace GisTask.Application.Services;
 
-public class TripService
+public class TripService : ITripService
 {
     private readonly AppContext _dbContext;
+    private readonly IDriverService _driverService;
 
-    public TripService(AppContext dbContext)
+    public TripService(AppContext dbContext, IDriverService driverService)
     {
         _dbContext = dbContext;
+        _driverService = driverService;
+    }
+
+    public IEnumerable<TripDto> GetTrips()
+    {
+        return _dbContext.Trips.Select(x => new TripDto()
+        {
+            Id = x.Id,
+            DriverId = x.DriverId,
+            PassengerCount = x.PassengerCount,
+            StartTime = x.StartTime,
+            EndTime = x.EndTime,
+        }).ToList();
     }
 
     public void AddTrip(TripDto tripDto)
@@ -25,7 +40,10 @@ public class TripService
         _dbContext.Trips.Add(trip);
         _dbContext.SaveChanges();
 
-        CalculateDriversPayabaleTime(tripDto.DriverId);
+        if (trip.DriverId is not null)
+        {
+            _driverService.CalculateDriversPayabaleTime(tripDto.DriverId.Value);
+        }
     }
 
     public void RemoveTrip(int tripId)
@@ -36,16 +54,7 @@ public class TripService
 
         if (trip.DriverId is not null)
         {
-            CalculateDriversPayabaleTime(trip.DriverId.Value);
+            _driverService.CalculateDriversPayabaleTime(trip.DriverId.Value);
         }
-    }
-
-    public void CalculateDriversPayabaleTime(int driverId)
-    {
-        var driver = _dbContext.Drivers.Find(driverId) ?? throw new Exception("Driver not found");
-        var trips = _dbContext.Trips.Where(x => x.DriverId == driverId).ToList();
-        var payableTime = trips.Sum(x => (x.EndTime - x.StartTime).TotalMinutes);
-        driver.PayableTimeMinutes = (int)payableTime;
-        _dbContext.SaveChanges();
     }
 }

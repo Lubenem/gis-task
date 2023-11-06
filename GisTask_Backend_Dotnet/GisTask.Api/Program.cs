@@ -1,3 +1,8 @@
+using GisTask.Application.Interfaces;
+using GisTask.Application.Services;
+using Microsoft.EntityFrameworkCore;
+using AppContext = GisTask.Domain.AppContext;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +11,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<AppContext>();
+builder.Services.AddScoped<IDriverService, DriverService>();
+builder.Services.AddScoped<ITripService, TripService>();
+
 
 var app = builder.Build();
 
