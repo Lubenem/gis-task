@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GisTask.Api", "GisTask.Api\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GisTask.Domain", "GisTask.Domain\GisTask.Domain.csproj", "{D40B406D-2FCC-4AEF-8970-F267EAB63000}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GisTask.Application", "GisTask.Application\GisTask.Application.csproj", "{F7BA9778-76C1-4933-9015-B4280BB7A39F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D40B406D-2FCC-4AEF-8970-F267EAB63000}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D40B406D-2FCC-4AEF-8970-F267EAB63000}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D40B406D-2FCC-4AEF-8970-F267EAB63000}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7BA9778-76C1-4933-9015-B4280BB7A39F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7BA9778-76C1-4933-9015-B4280BB7A39F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7BA9778-76C1-4933-9015-B4280BB7A39F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7BA9778-76C1-4933-9015-B4280BB7A39F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

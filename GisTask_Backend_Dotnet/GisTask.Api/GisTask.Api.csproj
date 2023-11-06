@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GisTask.Application\GisTask.Application.csproj" />
     <ProjectReference Include="..\GisTask.Domain\GisTask.Domain.csproj" />
   </ItemGroup>
 
