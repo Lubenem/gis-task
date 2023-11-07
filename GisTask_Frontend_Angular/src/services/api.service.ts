@@ -11,8 +11,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getDrivers(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/Driver/GetDrivers`);
+  getDrivers(): Observable<DriverDto[]> {
+    return this.http.get<DriverDto[]>(`${this.baseUrl}/Driver/GetDrivers`);
   }
 
   addDriver(driver: DriverDto): Observable<any> {

@@ -1,0 +1,14 @@
+.component-wrap {
+  display: flex;
+  justify-content: space-around;
+  .table-title {
+    font-size: larger;
+    margin: 10px;
+  }
+  .trip-table {
+    width: 45%;
+  }
+  .driver-table {
+    width: 45%;
+  }
+}
