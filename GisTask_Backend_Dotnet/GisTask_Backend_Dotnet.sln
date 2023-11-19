@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GisTask.Domain", "GisTask.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GisTask.Application", "GisTask.Application\GisTask.Application.csproj", "{F7BA9778-76C1-4933-9015-B4280BB7A39F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GisTask.Application.Tests", "GisTask.Application.Tests\GisTask.Application.Tests.csproj", "{846436F2-139A-4EF9-8E4A-FC7D98E2F28D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F7BA9778-76C1-4933-9015-B4280BB7A39F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7BA9778-76C1-4933-9015-B4280BB7A39F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7BA9778-76C1-4933-9015-B4280BB7A39F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{846436F2-139A-4EF9-8E4A-FC7D98E2F28D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{846436F2-139A-4EF9-8E4A-FC7D98E2F28D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{846436F2-139A-4EF9-8E4A-FC7D98E2F28D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{846436F2-139A-4EF9-8E4A-FC7D98E2F28D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

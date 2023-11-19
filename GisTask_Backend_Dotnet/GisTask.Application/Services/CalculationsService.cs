@@ -25,7 +25,7 @@ public class CalculationsService : ICalculationsService
             }
             else if (range.EndDate > lastMergedRange.EndDate)
             {
-                lastMergedRange = new DateRange(lastMergedRange.StartDate, range.EndDate);
+                mergedRanges[^1] = new DateRange(lastMergedRange.StartDate, range.EndDate);
             }
         }
 
