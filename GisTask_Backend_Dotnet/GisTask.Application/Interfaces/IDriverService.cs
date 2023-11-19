@@ -7,5 +7,4 @@ public interface IDriverService
     IEnumerable<DriverDto> GetDrivers();
     void AddDriver(DriverDto driverDto);
     void RemoveDriver(int driverId);
-    void CalculateDriversPayabaleTime(int driverId);
 }

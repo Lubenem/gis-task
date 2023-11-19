@@ -8,12 +8,12 @@ namespace GisTask.Application.Services;
 public class TripService : ITripService
 {
     private readonly AppContext _dbContext;
-    private readonly IDriverService _driverService;
+    private readonly ICalculationsService _calculationsService;
 
-    public TripService(AppContext dbContext, IDriverService driverService)
+    public TripService(AppContext dbContext, ICalculationsService calculationsService)
     {
         _dbContext = dbContext;
-        _driverService = driverService;
+        _calculationsService = calculationsService;
     }
 
     public IEnumerable<TripDto> GetTrips()
@@ -26,6 +26,20 @@ public class TripService : ITripService
             StartTime = x.StartTime,
             EndTime = x.EndTime,
         }).ToList();
+    }
+
+    public IEnumerable<TripDto> GetTripsByDriverId(int driverId)
+    {
+        return _dbContext.Trips
+            .Where(x => x.DriverId == driverId)
+            .Select(x => new TripDto()
+            {
+                Id = x.Id,
+                DriverId = x.DriverId,
+                PassengerCount = x.PassengerCount,
+                StartTime = x.StartTime,
+                EndTime = x.EndTime,
+            }).ToList();
     }
 
     public void AddTrip(TripDto tripDto)
@@ -42,7 +56,7 @@ public class TripService : ITripService
 
         if (trip.DriverId is not null)
         {
-            _driverService.CalculateDriversPayabaleTime(tripDto.DriverId.Value);
+            CalculateDriversPayabaleTime(tripDto.DriverId.Value);
         }
     }
 
@@ -54,7 +68,15 @@ public class TripService : ITripService
 
         if (trip.DriverId is not null)
         {
-            _driverService.CalculateDriversPayabaleTime(trip.DriverId.Value);
+            CalculateDriversPayabaleTime(trip.DriverId.Value);
         }
+    }
+
+    private void CalculateDriversPayabaleTime(int driverId)
+    {
+        var driver = _dbContext.Drivers.Find(driverId) ?? throw new Exception("Driver not found");
+        var trips = GetTripsByDriverId(driverId);
+        driver.PayableTimeMinutes = _calculationsService.CalculatePayabaleTime(trips);
+        _dbContext.SaveChanges();
     }
 }

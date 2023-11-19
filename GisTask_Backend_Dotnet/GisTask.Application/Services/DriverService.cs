@@ -42,13 +42,4 @@ public class DriverService : IDriverService
         _dbContext.Drivers.Remove(driver);
         _dbContext.SaveChanges();
     }
-
-    public void CalculateDriversPayabaleTime(int driverId)
-    {
-        var driver = _dbContext.Drivers.Find(driverId) ?? throw new Exception("Driver not found");
-        var trips = _dbContext.Trips.Where(x => x.DriverId == driverId).ToList();
-        var payableTime = trips.Sum(x => (x.EndTime - x.StartTime).TotalMinutes);
-        driver.PayableTimeMinutes = (int)payableTime;
-        _dbContext.SaveChanges();
-    }
 }

@@ -24,6 +24,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppContext>();
 builder.Services.AddScoped<IDriverService, DriverService>();
 builder.Services.AddScoped<ITripService, TripService>();
+builder.Services.AddScoped<ICalculationsService, CalculationsService>();
 
 var app = builder.Build();
 
