@@ -44,6 +44,11 @@ public class TripService : ITripService
 
     public void AddTrip(TripDto tripDto)
     {
+        if (tripDto.StartTime >= tripDto.EndTime)
+        {
+            throw new Exception("Start time must be less than end time");
+        }
+
         var trip = new Trip()
         {
             DriverId = tripDto.DriverId,
