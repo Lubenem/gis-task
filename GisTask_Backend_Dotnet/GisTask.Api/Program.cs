@@ -5,10 +5,12 @@ using AppContext = GisTask.Domain.AppContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var cors = builder.Configuration["CorsOrigin"];
+
 builder.Services.AddCors(options =>
     options.AddDefaultPolicy(
         policy =>
-            policy.WithOrigins("http://localhost:4200")
+            policy.WithOrigins(builder.Configuration["CorsOrigin"])
                   .AllowAnyMethod()
                   .AllowAnyHeader()
                   .AllowCredentials()
@@ -21,7 +23,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<AppContext>();
+
+var connection = builder.Configuration["DbConnectionString"];
+
+builder.Services.AddDbContext<AppContext>(opt => opt.UseSqlServer(builder.Configuration["DbConnectionString"]));
 builder.Services.AddScoped<IDriverService, DriverService>();
 builder.Services.AddScoped<ITripService, TripService>();
 builder.Services.AddScoped<ICalculationsService, CalculationsService>();

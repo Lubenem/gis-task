@@ -1,13 +1,18 @@
 ﻿using GisTask.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace GisTask.Domain;
 
 public class AppContext : DbContext
 {
+    public AppContext(DbContextOptions<AppContext> options)
+       : base(options)
+    {
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(@"Data Source=.;Initial Catalog=GisTask;Trusted_Connection=True;TrustServerCertificate=Yes;");
     }
 
     public DbSet<Driver> Drivers { get; set; }
