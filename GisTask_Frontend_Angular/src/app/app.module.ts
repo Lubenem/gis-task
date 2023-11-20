@@ -10,9 +10,16 @@ import { DriverState } from 'src/ngxs/driver/driver.state';
 import { TripState } from 'src/ngxs/trip/trip.state';
 import { TripsTableComponent } from './trips-table/trips-table.component';
 import { DriversTableComponent } from './drivers-table/drivers-table.component';
+import { AddTripFormComponent } from './add-trip-form/add-trip-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, TripsTableComponent, DriversTableComponent],
+  declarations: [
+    AppComponent,
+    TripsTableComponent,
+    DriversTableComponent,
+    AddTripFormComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,6 +27,7 @@ import { DriversTableComponent } from './drivers-table/drivers-table.component';
     GridModule,
     BrowserAnimationsModule,
     NgxsModule.forRoot([DriverState, TripState]),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

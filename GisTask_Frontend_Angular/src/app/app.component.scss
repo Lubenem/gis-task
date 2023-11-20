@@ -1,5 +1,11 @@
 .component-wrap {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  .tables {
+    display: flex;
+    justify-content: space-between;
+  }
 }
