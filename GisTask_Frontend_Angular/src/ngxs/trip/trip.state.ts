@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TripStateModel } from './trip.state.model';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ApiService } from 'src/services/api.service';
-import { FetchTrips } from './trip.actions';
+import { AddTrip, FetchTrips } from './trip.actions';
 import { tap } from 'rxjs';
 import { TripDto } from 'src/models';
 
@@ -27,6 +27,11 @@ export class TripState {
         });
       })
     );
+  }
+
+  @Action(AddTrip)
+  addTrip(ctx: StateContext<TripStateModel>, action: AddTrip) {
+    return this.apiService.addTrip(action.trip);
   }
 
   @Selector()

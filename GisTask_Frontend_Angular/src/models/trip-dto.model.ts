@@ -1,8 +1,7 @@
-export interface TripDto { 
-    id?: number;
-    driverId?: number | null;
-    passengerCount?: number;
-    startTime?: string;
-    endTime?: string;
+export interface TripDto {
+  id?: number;
+  driverId?: number | null;
+  passengerCount?: number;
+  startTime?: Date;
+  endTime?: Date;
 }
-

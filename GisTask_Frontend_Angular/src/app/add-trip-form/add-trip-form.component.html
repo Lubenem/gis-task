@@ -16,6 +16,16 @@
     </div>
 
     <div class="k-form-field">
+      <label for="driverId" class="k-label">Passengers count:</label>
+      <input
+        type="number"
+        id="passengerCount"
+        formControlName="passengerCount"
+        class="k-textbox"
+      />
+    </div>
+
+    <div class="k-form-field">
       <label for="start" class="k-label">Start Date:</label>
       <input
         type="datetime-local"
@@ -36,7 +46,9 @@
     </div>
 
     <div class="submit-wrap k-form-field">
-      <button type="submit" class="k-button k-primary submit-btn">Add Trip</button>
+      <button type="submit" class="k-button k-primary submit-btn">
+        Add Trip
+      </button>
     </div>
   </form>
 </div>
