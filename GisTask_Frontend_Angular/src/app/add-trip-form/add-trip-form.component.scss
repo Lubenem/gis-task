@@ -1,0 +1,14 @@
+.submit-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  .submit-btn {
+    width: 100px;
+    height: 30px;
+    border-radius: 3px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(164, 170, 231);
+    }
+  }
+}
