@@ -5,77 +5,70 @@ import {
   process,
   SortDescriptor,
 } from '@progress/kendo-data-query';
-import { map, Observable, of } from 'rxjs';
-import { ApiService } from './api.service';
+import { Observable, of } from 'rxjs';
 import { DriverDto, TripDto } from 'src/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TableService {
-  constructor(private apiService: ApiService) {}
+  constructor() {}
 
   public getDrivers(
+    items: DriverDto[],
     skip: number,
     pageSize: number,
     sortDescriptor: SortDescriptor[],
     filterTerm: number | null
   ): Observable<DataResult> {
-    return this.apiService.getDrivers().pipe(
-      map((response: DriverDto[]) => {
-        let data = orderBy(response, sortDescriptor);
-        if (filterTerm) {
-          data = process(data, {
-            filter: {
-              logic: 'and',
-              filters: [
-                {
-                  field: 'CategoryID',
-                  operator: 'eq',
-                  value: filterTerm,
-                },
-              ],
+    let data = orderBy(items, sortDescriptor);
+    if (filterTerm) {
+      data = process(data, {
+        filter: {
+          logic: 'and',
+          filters: [
+            {
+              field: 'CategoryID',
+              operator: 'eq',
+              value: filterTerm,
             },
-          }).data;
-        }
-        const pagedData = data.slice(skip, skip + pageSize);
-        return {
-          data: pagedData,
-          total: data.length,
-        };
-      })
-    );
+          ],
+        },
+      }).data;
+    }
+    const pagedData = data.slice(skip, skip + pageSize);
+    return of({
+      data: pagedData,
+      total: data.length,
+    });
   }
 
   public getTrips(
+    items: TripDto[],
     skip: number,
     pageSize: number,
     sortDescriptor: SortDescriptor[],
     filterTerm: number | null
   ): Observable<DataResult> {
-    return this.apiService.getTrips().pipe(
-      map((response: TripDto[]) => {
-        let data = orderBy(response, sortDescriptor);
-        if (filterTerm) {
-          data = process(data, {
-            filter: {
-              logic: 'and',
-              filters: [
-                {
-                  field: 'CategoryID',
-                  operator: 'eq',
-                  value: filterTerm,
-                },
-              ],
+    let data = orderBy(items, sortDescriptor);
+    if (filterTerm) {
+      data = process(data, {
+        filter: {
+          logic: 'and',
+          filters: [
+            {
+              field: 'CategoryID',
+              operator: 'eq',
+              value: filterTerm,
             },
-          }).data;
-        }
-        const pagedData = data.slice(skip, skip + pageSize);
-        return {
-          data: pagedData,
-          total: data.length,
-        };
-      })
-    );
+          ],
+        },
+      }).data;
+    }
+    const pagedData = data.slice(skip, skip + pageSize);
+    return of({
+      data: pagedData,
+      total: data.length,
+    });
   }
 }
