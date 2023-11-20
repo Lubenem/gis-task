@@ -1,0 +1,21 @@
+<div class="component-wrap">
+  <div class="driver-table data-table">
+    <div class="table-title">Drivers</div>
+    <kendo-grid
+      [data]="driverTableItems | async"
+      [pageSize]="driverTablePageSize"
+      [skip]="driverTableSkip"
+      [pageable]="true"
+      (pageChange)="driverTablePageChange($event)"
+      [sortable]="true"
+      [sort]="driverTableSortDescriptor"
+      (sortChange)="driverTableHandleSortChange($event)"
+      [height]="300"
+    >
+      <kendo-grid-column field="id" title="ID"></kendo-grid-column>
+      <kendo-grid-column field="name" title="Name"></kendo-grid-column>
+      <kendo-grid-column field="payableTimeMinutes" title="Payable Time (min)">
+      </kendo-grid-column>
+    </kendo-grid>
+  </div>
+</div>

@@ -1,45 +1,4 @@
 <div class="component-wrap">
-  <div class="trip-table">
-    <div class="table-title">Trips</div>
-    <kendo-grid
-      [data]="tripTableItems | async"
-      [pageSize]="tripTablePageSize"
-      [skip]="tripTableSkip"
-      [pageable]="true"
-      (pageChange)="tripTablePageChange($event)"
-      [sortable]="true"
-      [sort]="tripTableSortDescriptor"
-      (sortChange)="tripTableHandleSortChange($event)"
-      [height]="300"
-    >
-      <kendo-grid-column field="id" title="ID"></kendo-grid-column>
-      <kendo-grid-column field="driverId" title="Driver Id"></kendo-grid-column>
-      <kendo-grid-column
-        field="passengerCount"
-        title="Passengers"
-      ></kendo-grid-column>
-      <kendo-grid-column field="startTime" title="Start"></kendo-grid-column>
-      <kendo-grid-column field="endTime" title="End"></kendo-grid-column>
-    </kendo-grid>
-  </div>
-
-  <div class="driver-table">
-    <div class="table-title">Drivers</div>
-    <kendo-grid
-      [data]="driverTableItems | async"
-      [pageSize]="driverTablePageSize"
-      [skip]="driverTableSkip"
-      [pageable]="true"
-      (pageChange)="driverTablePageChange($event)"
-      [sortable]="true"
-      [sort]="driverTableSortDescriptor"
-      (sortChange)="driverTableHandleSortChange($event)"
-      [height]="300"
-    >
-      <kendo-grid-column field="id" title="ID"></kendo-grid-column>
-      <kendo-grid-column field="name" title="Name"></kendo-grid-column>
-      <kendo-grid-column field="payableTimeMinutes" title="Payable Time (min)">
-      </kendo-grid-column>
-    </kendo-grid>
-  </div>
+  <app-trips-table></app-trips-table>
+  <app-drivers-table></app-drivers-table>
 </div>
